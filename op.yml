@@ -1,5 +1,5 @@
 name: github.com/opspec-pkgs/slack.teams.invite
-description: invites a user to a team (via email)
+description: invites a user to a slack team (via email)
 inputs:
   token:
     string:
