@@ -1,5 +1,5 @@
 # problem statement
-invites a user to a team (via email)
+invites a user to a slack team (via email)
 
 # example usage
 
