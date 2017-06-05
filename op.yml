@@ -1,0 +1,40 @@
+name: github.com/opspec-pkgs/slack.teams.invite
+description: invites a user to a team (via email)
+inputs:
+  token:
+    string:
+      constraints: { minLength: 1 }
+      description: authentication token
+      isSecret: true
+  channelIds:
+    string:
+      description: comma separated ids of channels to auto-join user to
+  email:
+    string:
+      constraints: { format: email, minLength: 1 }
+      description: email address of the user
+  firstName:
+    string:
+      description: first name of the user
+      default: " "
+  lastName:
+    string:
+      description: last name of the user
+      default: " "
+  resend:
+    string:
+      constraints: { enum: ['true', 'false'] }
+      description: whether to resend the invitation if previously sent
+      default: 'true'
+run:
+  container:
+    image: { ref: 'opspecpkgs/slack.teams.invite:1.0.0' }
+    cmd: [ /cmd.sh ]
+    envVars:
+      token: $(token)
+      channelIds: $(channelIds)
+      email: $(email)
+      firstName: $(firstName)
+      lastName: $(lastName)
+      resend: $(resend)
+    files: { /cmd.sh }
